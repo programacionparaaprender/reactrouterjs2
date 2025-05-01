@@ -1,34 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import * as React from 'react';
+import { Route } from 'react-router';
+import Users from './users'
+import Contact from './contact'
+import Notfound from './notfound'
+import Counter from './counter.js'
+import Vieja from './juegos/vieja/index.js';
+import GoogleMap from './google/GoogleMap.js';
+import Layout from './components/Layout'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Layout>
+        <Route path="/googlemaps" component={GoogleMap} />
+        <Route path="/vieja" component={Vieja} />
+        <Route path="/users" component={Users} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/counter" component={Counter} />
+        <Route component={Notfound} />
+    </Layout>
   )
 }
 
